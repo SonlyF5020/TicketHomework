@@ -14,4 +14,12 @@ public class CommodityParserTest {
         assertThat(commodities.size(), is(1));
         assertThat(commodities.get(0), is(Commodity.COLA));
     }
+
+    @Test
+    public void should_parse_ITEM000001_minus_2_to_two_cola() {
+        List<Commodity> commodities = CommodityParser.parse("ITEM000001-2");
+        assertThat(commodities.size(), is(2));
+        assertThat(commodities.get(0), is(Commodity.COLA));
+        assertThat(commodities.get(1), is(Commodity.COLA));
+    }
 }
