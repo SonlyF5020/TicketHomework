@@ -11,7 +11,7 @@ public enum Commodity {
 
     public static Commodity getByCode(String commodityCode) {
         for (Commodity commodity : Commodity.values()) {
-            if (commodity.code == commodityCode) {
+            if (commodity.code.equals(commodityCode)) {
                 return commodity;
             }
         }

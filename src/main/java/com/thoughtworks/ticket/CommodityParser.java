@@ -16,7 +16,7 @@ public class CommodityParser {
             String commodityCode = matcher.group(1);
             String quantity = matcher.group(3) == null ? "1" : matcher.group(3);
             for (int i = 0; i < Integer.valueOf(quantity); i++) {
-                commodities.add(Commodity.getByCode("ITEM000001"));
+                commodities.add(Commodity.getByCode(commodityCode));
             }
         }
         return commodities;
