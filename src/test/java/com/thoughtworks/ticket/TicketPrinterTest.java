@@ -21,10 +21,23 @@ public class TicketPrinterTest {
         commodities.add(Commodity.COLA);
         commodities.add(Commodity.COLA);
         commodities.add(Commodity.COLA);
-        commodities.add(Commodity.BANANA);
-        commodities.add(Commodity.BANANA);
         String printData = TicketPrinter.printData(commodities);
-        assertThat(printData, is("名称：可口可乐，数量：3瓶，单价：3.00(元)，小计：6.00(元)\n" +
-                "名称：香蕉，数量：2个，单价：1.00(元)，小计：2.00(元)\n"));
+        assertThat(printData, is("名称：可口可乐，数量：3瓶，单价：3.00(元)，小计：9.00(元)\n"));
+    }
+
+    @Test
+    public void should_print_two_plus_one_commodities() {
+        commodities.add(Commodity.BADMINTON);
+        commodities.add(Commodity.BADMINTON);
+        commodities.add(Commodity.BADMINTON);
+        String printData = TicketPrinter.printData(commodities);
+        assertThat(printData, is("名称：羽毛球，数量：3个，单价：1.00(元)，小计：2.00(元)\n"));
+    }
+
+    @Test
+    public void should_print_on_sale_commodities() {
+        commodities.add(Commodity.BASKETBALL);
+        String printData = TicketPrinter.printData(commodities);
+        assertThat(printData, is("名称：篮球，数量：1个，单价：100.00(元)，小计：95.00(元)，节省5.00(元)"));
     }
 }

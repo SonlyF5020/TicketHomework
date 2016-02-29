@@ -53,7 +53,8 @@ public class Calculator {
         return commodities.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 
-    public static double calculate(Commodity commodity, int quantity) {
+    public static double calculate(Commodity commodity, long
+            quantity) {
         List<Commodity> commodities = new ArrayList<>();
         for (int i = 0; i < quantity; i++) {
             commodities.add(commodity);
