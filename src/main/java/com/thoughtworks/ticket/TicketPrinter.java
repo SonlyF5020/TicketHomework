@@ -29,10 +29,7 @@ public class TicketPrinter {
     }
 
     private static String onSalePostfix(Commodity commodity, Long quantity) {
-        if (commodity.isOnSale()) {
-            return "，节省" + moneyOf(Calculator.getOnSaleDiscount(commodity, quantity)) + "(元)";
-        }
-        return "";
+        return commodity.isOnSale() ? "，节省" + moneyOf(Calculator.getOnSaleDiscount(commodity, quantity)) + "(元)" : "";
     }
 
     private static Map<Commodity, Long> groupCommodities(List<Commodity> commodities) {
@@ -41,5 +38,9 @@ public class TicketPrinter {
 
     private static String moneyOf(double price) {
         return new DecimalFormat(MONEY_FORMAT).format(price);
+    }
+
+    public static String printHeader() {
+        return "***<没钱赚商店>购物清单***\n";
     }
 }

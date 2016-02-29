@@ -11,6 +11,7 @@ import static org.junit.Assert.assertThat;
 
 public class TicketPrinterTest {
     List<Commodity> commodities;
+
     @Before
     public void initCommodities() {
         commodities = new ArrayList<>();
@@ -39,5 +40,11 @@ public class TicketPrinterTest {
         commodities.add(Commodity.BASKETBALL);
         String printData = TicketPrinter.printData(commodities);
         assertThat(printData, is("名称：篮球，数量：1个，单价：100.00(元)，小计：95.00(元)，节省5.00(元)\n"));
+    }
+
+    @Test
+    public void should_print_store_header() {
+        String header = TicketPrinter.printHeader();
+        assertThat(header, is("***<没钱赚商店>购物清单***\n"));
     }
 }
