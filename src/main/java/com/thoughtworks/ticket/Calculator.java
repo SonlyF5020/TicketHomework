@@ -19,9 +19,7 @@ public class Calculator {
     private static double getTwoPlusOneDiscounts(List<Commodity> commodities) {
         final double[] twoPlusOneDiscount = {0};
         Map<Commodity, Long> commodityMap = commodities.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        commodityMap.forEach((k, v) -> {
-            twoPlusOneDiscount[0] += getTwoPlusOneDiscount(k, v);
-        });
+        commodityMap.forEach((commodity, quantity) -> twoPlusOneDiscount[0] += getTwoPlusOneDiscount(commodity, quantity));
         return twoPlusOneDiscount[0];
     }
 
