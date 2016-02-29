@@ -32,4 +32,12 @@ public class CalculatorTest {
         commodities.add(Commodity.BADMINTON);
         assertThat(Calculator.calculate(commodities), is(2.00));
     }
+
+    @Test
+    public void should_calculate_sales_commodities_price() {
+        commodities.add(Commodity.BASKETBALL);
+        commodities.add(Commodity.APPLE);
+        commodities.add(Commodity.APPLE);
+        assertThat(Calculator.calculate(commodities), is(105.00));
+    }
 }
