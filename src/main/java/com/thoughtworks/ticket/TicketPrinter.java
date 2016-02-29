@@ -1,7 +1,5 @@
 package com.thoughtworks.ticket;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
@@ -42,5 +40,21 @@ public class TicketPrinter {
 
     public static String printHeader() {
         return "***<没钱赚商店>购物清单***\n";
+    }
+
+    public static String printSummary(List<Commodity> commodities) {
+        return "----------------------\n" +
+                "总计：" +
+                moneyOf(Calculator.calculate(commodities)) +
+                "(元)\n" +
+                printDiscountSummary(commodities) +
+                "**********************\n";
+    }
+
+    private static String printDiscountSummary(List<Commodity> commodities) {
+        double totalDiscount = Calculator.getTotalDiscount(commodities);
+        return totalDiscount > 0 ? "节省：" +
+                moneyOf(totalDiscount) +
+                "(元)\n" : "";
     }
 }

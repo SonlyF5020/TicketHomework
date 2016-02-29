@@ -47,4 +47,22 @@ public class TicketPrinterTest {
         String header = TicketPrinter.printHeader();
         assertThat(header, is("***<没钱赚商店>购物清单***\n"));
     }
+
+    @Test
+    public void should_print_price_summary_for_normal_commodities() {
+        commodities.add(Commodity.COLA);
+        commodities.add(Commodity.COLA);
+        commodities.add(Commodity.COLA);
+        String summary = TicketPrinter.printSummary(commodities);
+        assertThat(summary, is("----------------------\n总计：9.00(元)\n**********************\n"));
+    }
+
+    @Test
+    public void should_print_price_summary_for_two_plus_one_commodities() {
+        commodities.add(Commodity.BADMINTON);
+        commodities.add(Commodity.BADMINTON);
+        commodities.add(Commodity.BADMINTON);
+        String summary = TicketPrinter.printSummary(commodities);
+        assertThat(summary, is("----------------------\n总计：2.00(元)\n节省：1.00(元)\n**********************\n"));
+    }
 }

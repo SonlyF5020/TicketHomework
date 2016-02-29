@@ -61,4 +61,8 @@ public class Calculator {
         }
         return calculate(commodities);
     }
+
+    public static double getTotalDiscount(List<Commodity> commodities) {
+        return getTwoPlusOneDiscounts(commodities) + getOnSaleDiscounts(commodities);
+    }
 }
