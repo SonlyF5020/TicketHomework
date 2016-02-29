@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 public class TicketFileReaderTest {
     @Test
     public void should_read_file () {
-        String file = getClass().getResource("/testData.json").getFile();
-        String json = TicketFileReader.read(file);
+        String filePath = getClass().getResource("/testData.json").getFile();
+        String json = TicketFileReader.read(filePath);
         assertThat(json, is("{  \"test\" : \"data\"}"));
     }
 }

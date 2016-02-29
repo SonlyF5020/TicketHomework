@@ -1,7 +1,7 @@
 package com.thoughtworks.ticket;
 
 public enum Commodity {
-    COLA("ITEM000001"), APPLE("ITEM000002"), BADMINTON("ITEM000003");
+    COLA("ITEM000001"), APPLE("ITEM000005"), BADMINTON("ITEM000003");
 
     private final String code;
 

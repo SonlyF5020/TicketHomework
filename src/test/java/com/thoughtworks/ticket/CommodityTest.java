@@ -13,8 +13,8 @@ public class CommodityTest {
     }
 
     @Test
-    public void should_get_APPLE_for_code_ITEM000002() {
-        assertThat(Commodity.getByCode("ITEM000002"), is(Commodity.APPLE));
+    public void should_get_APPLE_for_code_ITEM000005() {
+        assertThat(Commodity.getByCode("ITEM000005"), is(Commodity.APPLE));
     }
 
     @Test
