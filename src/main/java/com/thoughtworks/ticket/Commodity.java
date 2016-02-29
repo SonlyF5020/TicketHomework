@@ -1,12 +1,18 @@
 package com.thoughtworks.ticket;
 
 public enum Commodity {
-    COLA("ITEM000001"), APPLE("ITEM000005"), BADMINTON("ITEM000003");
+    COLA("ITEM000001", 3.00),
+    BANANA("ITEM000002", 2.00),
+    BADMINTON("ITEM000003", 1.00),
+    BASKETBALL("ITEM000004", 30.00),
+    APPLE("ITEM000005", 5.00);
 
     private final String code;
+    private double price;
 
-    Commodity(String code) {
+    Commodity(String code, double price) {
         this.code = code;
+        this.price = price;
     }
 
     public static Commodity getByCode(String commodityCode) {
@@ -16,5 +22,9 @@ public enum Commodity {
             }
         }
         return null;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }
