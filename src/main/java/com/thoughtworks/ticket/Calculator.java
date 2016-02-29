@@ -1,5 +1,6 @@
 package com.thoughtworks.ticket;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -50,5 +51,13 @@ public class Calculator {
 
     private static Map<Commodity, Long> groupCommodities(List<Commodity> commodities) {
         return commodities.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    }
+
+    public static double calculate(Commodity commodity, int quantity) {
+        List<Commodity> commodities = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            commodities.add(commodity);
+        }
+        return calculate(commodities);
     }
 }

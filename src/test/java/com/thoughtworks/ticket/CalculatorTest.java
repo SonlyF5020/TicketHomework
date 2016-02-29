@@ -50,4 +50,19 @@ public class CalculatorTest {
         commodities.add(Commodity.APPLE);
         assertThat(Calculator.calculate(commodities), is(104.00));
     }
+
+    @Test
+    public void should_calculate_normal_commodities_with_quantity() {
+        assertThat(Calculator.calculate(Commodity.COLA, 3), is(9.00));
+    }
+
+    @Test
+    public void should_calculate_two_plus_one_commodities_with_quantity() {
+        assertThat(Calculator.calculate(Commodity.BADMINTON, 3), is(2.00));
+    }
+
+    @Test
+    public void should_calculate_on_sale_commodities_with_quantity() {
+        assertThat(Calculator.calculate(Commodity.BASKETBALL, 3), is(285.00));
+    }
 }
