@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class CommodityParserTest {
@@ -19,7 +20,7 @@ public class CommodityParserTest {
     public void should_parse_ITEM000001_minus_2_to_two_cola() {
         List<Commodity> commodities = CommodityParser.parse("ITEM000001-2");
         assertThat(commodities.size(), is(2));
-        assertThat(commodities.get(0), is(Commodity.COLA));
-        assertThat(commodities.get(1), is(Commodity.COLA));
+        assertEquals(commodities.get(0), Commodity.COLA);
+        assertEquals(commodities.get(1), Commodity.COLA);
     }
 }
