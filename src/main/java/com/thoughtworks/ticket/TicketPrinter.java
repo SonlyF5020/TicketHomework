@@ -23,7 +23,16 @@ public class TicketPrinter {
         return "名称：" + commodity.getName() +
                 "，数量：" + quantity + commodity.getUnit() +
                 "，单价：" + moneyOf(commodity.getPrice()) +
-                "(元)，小计：" + moneyOf(Calculator.calculate(commodity, quantity)) + "(元)\n";
+                "(元)，小计：" + moneyOf(Calculator.calculate(commodity, quantity)) + "(元)" +
+                onSalePostfix(commodity, quantity) +
+                "\n";
+    }
+
+    private static String onSalePostfix(Commodity commodity, Long quantity) {
+        if (commodity.isOnSale()) {
+            return "，节省" + moneyOf(Calculator.getOnSaleDiscount(commodity, quantity)) + "(元)";
+        }
+        return "";
     }
 
     private static Map<Commodity, Long> groupCommodities(List<Commodity> commodities) {

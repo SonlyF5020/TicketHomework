@@ -38,6 +38,6 @@ public class TicketPrinterTest {
     public void should_print_on_sale_commodities() {
         commodities.add(Commodity.BASKETBALL);
         String printData = TicketPrinter.printData(commodities);
-        assertThat(printData, is("名称：篮球，数量：1个，单价：100.00(元)，小计：95.00(元)，节省5.00(元)"));
+        assertThat(printData, is("名称：篮球，数量：1个，单价：100.00(元)，小计：95.00(元)，节省5.00(元)\n"));
     }
 }

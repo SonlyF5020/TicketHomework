@@ -26,7 +26,7 @@ public class Calculator {
         return twoPlusOneDiscount[0];
     }
 
-    private static double getOnSaleDiscount(Commodity commodity, Long quantity) {
+    public static double getOnSaleDiscount(Commodity commodity, Long quantity) {
         return commodity.isOnSale() ? (commodity.getPrice() * quantity * DISCOUNT_RATE) : INIT_DISCOUNT;
     }
 
