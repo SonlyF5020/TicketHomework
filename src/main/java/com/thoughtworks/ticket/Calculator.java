@@ -9,16 +9,29 @@ public class Calculator {
     public static final int QUANTITY_LIMIT = 2;
     public static final double INIT_DISCOUNT = 0.00;
     public static final double INIT_PRICE = 0.00;
+    public static final double DISCOUNT_RATE = 0.05;
 
     public static double calculate(List<Commodity> commodities) {
         double price = getInitialPrice(commodities);
         price -= getTwoPlusOneDiscounts(commodities);
+        price -= getOnSaleDiscounts(commodities);
         return price;
+    }
+
+    private static double getOnSaleDiscounts(List<Commodity> commodities) {
+        final double[] twoPlusOneDiscount = {0};
+        Map<Commodity, Long> commodityMap = groupCommodities(commodities);
+        commodityMap.forEach((commodity, quantity) -> twoPlusOneDiscount[0] += getOnSaleDiscount(commodity, quantity));
+        return twoPlusOneDiscount[0];
+    }
+
+    private static double getOnSaleDiscount(Commodity commodity, Long quantity) {
+        return commodity.isOnSale() ? (commodity.getPrice() * quantity * DISCOUNT_RATE) : INIT_DISCOUNT;
     }
 
     private static double getTwoPlusOneDiscounts(List<Commodity> commodities) {
         final double[] twoPlusOneDiscount = {0};
-        Map<Commodity, Long> commodityMap = commodities.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Map<Commodity, Long> commodityMap = groupCommodities(commodities);
         commodityMap.forEach((commodity, quantity) -> twoPlusOneDiscount[0] += getTwoPlusOneDiscount(commodity, quantity));
         return twoPlusOneDiscount[0];
     }
@@ -28,10 +41,14 @@ public class Calculator {
     }
 
     private static double getInitialPrice(List<Commodity> commodities) {
-        double price =  INIT_PRICE;
+        double price = INIT_PRICE;
         for (Commodity commodity : commodities) {
             price += commodity.getPrice();
         }
         return price;
+    }
+
+    private static Map<Commodity, Long> groupCommodities(List<Commodity> commodities) {
+        return commodities.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 }

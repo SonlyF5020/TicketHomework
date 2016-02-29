@@ -34,10 +34,20 @@ public class CalculatorTest {
     }
 
     @Test
-    public void should_calculate_sales_commodities_price() {
+    public void should_calculate_on_sale_commodities_price() {
         commodities.add(Commodity.BASKETBALL);
         commodities.add(Commodity.APPLE);
         commodities.add(Commodity.APPLE);
         assertThat(Calculator.calculate(commodities), is(105.00));
+    }
+
+    @Test
+    public void should_calculate_combined_commodities_price() {
+        commodities.add(Commodity.COLA);
+        commodities.add(Commodity.BADMINTON);
+        commodities.add(Commodity.BADMINTON);
+        commodities.add(Commodity.BASKETBALL);
+        commodities.add(Commodity.APPLE);
+        assertThat(Calculator.calculate(commodities), is(104.00));
     }
 }

@@ -35,4 +35,8 @@ public enum Commodity {
     public boolean isTwoPlusOne() {
         return twoPlusOne;
     }
+
+    public boolean isOnSale() {
+        return onSale;
+    }
 }
