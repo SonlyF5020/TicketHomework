@@ -23,8 +23,8 @@ public class TicketManager {
 
     private static List<Commodity> convertStringtoCommodities(List<String> commodities) {
         List<Commodity> result = new ArrayList<>();
-        for (String comodityString: commodities) {
-            result.addAll(CommodityParser.parse(comodityString));
+        for (String commodityString: commodities) {
+            result.addAll(CommodityParser.parse(commodityString));
         }
         return result;
     }

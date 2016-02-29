@@ -10,8 +10,7 @@ public class CommodityParser {
 
     public static List<Commodity> parse(String commodity) {
         List<Commodity> commodities = new ArrayList<>();
-        Pattern pattern = Pattern.compile(REGEX);
-        Matcher matcher = pattern.matcher(commodity);
+        Matcher matcher = Pattern.compile(REGEX).matcher(commodity);
         if (matcher.find( )) {
             String commodityCode = matcher.group(1);
             String quantity = matcher.group(3) == null ? "1" : matcher.group(3);
