@@ -59,6 +59,19 @@ public class TicketPrinter {
     }
 
     public static String printTwoPlusOneSummary(List<Commodity> commodities) {
-        return "买二赠一商品：\n" + "名称：羽毛球，数量：1个\n";
+        return "----------------------\n" + "买二赠一商品：\n" + twoPlusOneSummary(commodities);
+    }
+
+    private static String twoPlusOneSummary(List<Commodity> commodities) {
+        final String[] printResult = {""};
+        Map<Commodity, Long> commodityLongMap = groupCommodities(commodities);
+        commodityLongMap.forEach((commodity, quantity) -> printResult[0] += twoPlusOneDetail(commodity, quantity));
+        return printResult[0];
+    }
+
+    private static String twoPlusOneDetail(Commodity commodity, Long quantity) {
+        return "名称：" + commodity.getName() +
+                "，数量：" + Calculator.calculateTwoPlusOneDiscountAmount(quantity) +
+                commodity.getUnit() + "\n";
     }
 }

@@ -74,6 +74,6 @@ public class TicketPrinterTest {
         String summary = TicketPrinter.printTwoPlusOneSummary(commodities);
         assertThat(summary, is("----------------------\n" +
                 "买二赠一商品：\n" +
-                "名称：羽毛球，数量：1个"));
+                "名称：羽毛球，数量：1个\n"));
     }
 }

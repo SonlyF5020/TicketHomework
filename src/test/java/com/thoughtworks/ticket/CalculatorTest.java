@@ -48,7 +48,7 @@ public class CalculatorTest {
         commodities.add(Commodity.BADMINTON);
         commodities.add(Commodity.BASKETBALL);
         commodities.add(Commodity.APPLE);
-        assertThat(Calculator.calculate(commodities), is(104.00));
+        assertThat(Calculator.calculate(commodities), is(105.00));
     }
 
     @Test
@@ -59,6 +59,21 @@ public class CalculatorTest {
     @Test
     public void should_calculate_two_plus_one_commodities_with_quantity() {
         assertThat(Calculator.calculate(Commodity.BADMINTON, 3), is(2.00));
+    }
+
+    @Test
+    public void should_calculate_two_plus_one_commodities_with_more_quantity() {
+        assertThat(Calculator.calculate(Commodity.BADMINTON, 7), is(5.00));
+    }
+
+    @Test
+    public void should_calculate_two_plus_one_commodities_amount_with_quantity() {
+        assertThat(Calculator.calculateTwoPlusOneDiscountAmount(Long.valueOf(5)), is(1L));
+    }
+
+    @Test
+    public void should_calculate_two_plus_one_commodities_amount_with_more_quantity() {
+        assertThat(Calculator.calculateTwoPlusOneDiscountAmount(Long.valueOf(7)), is(2L));
     }
 
     @Test

@@ -38,7 +38,7 @@ public class Calculator {
     }
 
     private static double getTwoPlusOneDiscount(Commodity commodity, Long quantity) {
-        return commodity.isTwoPlusOne() && quantity >= QUANTITY_LIMIT ? commodity.getPrice() : INIT_DISCOUNT;
+        return commodity.isTwoPlusOne() && quantity >= QUANTITY_LIMIT ? (commodity.getPrice() * calculateTwoPlusOneDiscountAmount(quantity)) : INIT_DISCOUNT;
     }
 
     private static double getInitialPrice(List<Commodity> commodities) {
@@ -53,8 +53,7 @@ public class Calculator {
         return commodities.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 
-    public static double calculate(Commodity commodity, long
-            quantity) {
+    public static double calculate(Commodity commodity, long quantity) {
         List<Commodity> commodities = new ArrayList<>();
         for (int i = 0; i < quantity; i++) {
             commodities.add(commodity);
@@ -64,5 +63,9 @@ public class Calculator {
 
     public static double getTotalDiscount(List<Commodity> commodities) {
         return getTwoPlusOneDiscounts(commodities) + getOnSaleDiscounts(commodities);
+    }
+
+    public static Long calculateTwoPlusOneDiscountAmount(Long quantity) {
+        return quantity/(QUANTITY_LIMIT + 1);
     }
 }
