@@ -59,7 +59,8 @@ public class TicketPrinter {
     }
 
     public static String printTwoPlusOneSummary(List<Commodity> commodities) {
-        return "----------------------\n" + "买二赠一商品：\n" + twoPlusOneSummary(commodities);
+        String twoPlusOneSummary = twoPlusOneSummary(commodities);
+        return twoPlusOneSummary == "" ? "" : "----------------------\n" + "买二赠一商品：\n" + twoPlusOneSummary;
     }
 
     private static String twoPlusOneSummary(List<Commodity> commodities) {
@@ -70,8 +71,15 @@ public class TicketPrinter {
     }
 
     private static String twoPlusOneDetail(Commodity commodity, Long quantity) {
-        return "名称：" + commodity.getName() +
+        return !commodity.isTwoPlusOne() ? "" : "名称：" + commodity.getName() +
                 "，数量：" + Calculator.calculateTwoPlusOneDiscountAmount(quantity) +
                 commodity.getUnit() + "\n";
+    }
+
+    public static String print(List<Commodity> commodities) {
+        return printHeader() +
+                printData(commodities) +
+                printTwoPlusOneSummary(commodities) +
+                printSummary(commodities);
     }
 }
