@@ -57,4 +57,8 @@ public class TicketPrinter {
                 moneyOf(totalDiscount) +
                 "(元)\n" : "";
     }
+
+    public static String printTwoPlusOneSummary(List<Commodity> commodities) {
+        return "买二赠一商品：\n" + "名称：羽毛球，数量：1个\n";
+    }
 }

@@ -65,4 +65,15 @@ public class TicketPrinterTest {
         String summary = TicketPrinter.printSummary(commodities);
         assertThat(summary, is("----------------------\n总计：2.00(元)\n节省：1.00(元)\n**********************\n"));
     }
+
+    @Test
+    public void should_print_two_plus_one_summary_for_two_plus_one_commodities() {
+        commodities.add(Commodity.BADMINTON);
+        commodities.add(Commodity.BADMINTON);
+        commodities.add(Commodity.BADMINTON);
+        String summary = TicketPrinter.printTwoPlusOneSummary(commodities);
+        assertThat(summary, is("----------------------\n" +
+                "买二赠一商品：\n" +
+                "名称：羽毛球，数量：1个"));
+    }
 }
